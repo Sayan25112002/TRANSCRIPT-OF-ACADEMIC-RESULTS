@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface SemesterMapper {
 
-    Semester toSemesterDto(SemesterRequestDto semesterRequestDto);
+    Semester toSemester(SemesterRequestDto semesterRequestDto);
 
     SemesterResponseDto toSemesterResponseDto(Semester semester);
 
