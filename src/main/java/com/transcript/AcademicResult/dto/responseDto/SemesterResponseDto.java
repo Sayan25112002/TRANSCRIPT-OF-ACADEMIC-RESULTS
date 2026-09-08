@@ -17,10 +17,8 @@ public class SemesterResponseDto {
 
     private String semester;
 
-    private List<CourseResponseDto> courses;
+    private List<CourseResponseDto> courseResponseDtos;
 
     private String sgpa;
-
-    private AcademicResultResponseDto academicResult;
 
 }

@@ -6,6 +6,7 @@ import com.transcript.AcademicResult.dto.requestDto.SemesterRequestDto;
 import com.transcript.AcademicResult.dto.responseDto.AcademicResultResponseDto;
 import com.transcript.AcademicResult.dto.responseDto.CourseResponseDto;
 import com.transcript.AcademicResult.dto.responseDto.SemesterResponseDto;
+import net.sf.jasperreports.engine.JRException;
 
 import java.io.IOException;
 
@@ -19,6 +20,6 @@ public interface TranscriptService {
 
     AcademicResultResponseDto getAcademicResult(Long id);
 
-    byte[] generateTranscript(Long id);
+    byte[] generateTranscript(Long id) throws JRException;
 
 }

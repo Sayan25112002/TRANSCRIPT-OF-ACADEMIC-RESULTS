@@ -17,6 +17,8 @@ public class CourseResponseDto {
 
     private String typeOfCourse;
 
+    private String content;
+
     private String grade;
 
     private String gradePoint;
@@ -24,9 +26,5 @@ public class CourseResponseDto {
     private String credit;
 
     private String creditPoint;
-
-    private SemesterResponseDto semester;
-
-    private AcademicResultResponseDto academicResult;
 
 }

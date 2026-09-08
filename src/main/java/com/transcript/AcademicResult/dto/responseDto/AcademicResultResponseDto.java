@@ -39,7 +39,7 @@ public class AcademicResultResponseDto {
 
     private String collegeName;
 
-    private List<SemesterResponseDto> semesters;
+    private List<SemesterResponseDto> semesterResponseDtos;
 
     private String universityLocation;
 

@@ -1,39 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubjectCourse" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3606f211-ac55-4896-9b16-b89951555a47">
-    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-    <style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
-        <box>
-            <pen lineWidth="0.5" lineColor="#000000"/>
-            <topPen lineWidth="0.5" lineColor="#000000"/>
-            <leftPen lineWidth="0.5" lineColor="#000000"/>
-            <bottomPen lineWidth="0.5" lineColor="#000000"/>
-            <rightPen lineWidth="0.5" lineColor="#000000"/>
-        </box>
-    </style>
-    <style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
-        <box>
-            <pen lineWidth="0.5" lineColor="#000000"/>
-            <topPen lineWidth="0.5" lineColor="#000000"/>
-            <leftPen lineWidth="0.5" lineColor="#000000"/>
-            <bottomPen lineWidth="0.5" lineColor="#000000"/>
-            <rightPen lineWidth="0.5" lineColor="#000000"/>
-        </box>
-    </style>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubjectCourse" pageWidth="510" pageHeight="842" columnWidth="510" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3606f211-ac55-4896-9b16-b89951555a47">
     <style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
         <box>
             <pen lineWidth="0.5" lineColor="#000000"/>
-            <topPen lineWidth="0.5" lineColor="#000000"/>
-            <leftPen lineWidth="0.5" lineColor="#000000"/>
-            <bottomPen lineWidth="0.5" lineColor="#000000"/>
-            <rightPen lineWidth="0.5" lineColor="#000000"/>
         </box>
     </style>
     <subDataset name="courseDataset" uuid="df357084-55ea-4272-a14d-bdacc4a7a809">
-        <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-        <queryString>
-            <![CDATA[]]>
-        </queryString>
         <field name="course" class="java.lang.String"/>
         <field name="typeOfCourse" class="java.lang.String"/>
         <field name="content" class="java.lang.String"/>
@@ -42,132 +15,104 @@
         <field name="credit" class="java.lang.String"/>
         <field name="creditPoint" class="java.lang.String"/>
     </subDataset>
-    <queryString>
-        <![CDATA[]]>
-    </queryString>
+    <parameter name="totalCourseCount" class="java.lang.Integer"/>
     <field name="semester" class="java.lang.String"/>
-    <field name="courseList" class="java.util.List"/>
+    <field name="courses" class="java.util.List"/>
     <field name="sgpa" class="java.lang.String"/>
-    <background>
-        <band splitType="Stretch"/>
-    </background>
     <detail>
-        <band height="26" splitType="Stretch">
-            <property name="com.jaspersoft.studio.unit.height" value="px"/>
-            <textField>
-                <reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="50" height="26" uuid="0571b89c-fbac-4710-9c64-5cf15dcecafb">
-                    <property name="com.jaspersoft.studio.unit.width" value="px"/>
-                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+        <band height="14" splitType="Prevent">
+            <textField isBlankWhenNull="true">
+                <reportElement stretchType="ContainerHeight" x="0" y="0" width="50" height="14" uuid="2dbb73c3-5779-4c78-8f1d-8d74dbc089c2">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} == null || $P{totalCourseCount}.intValue() <= 31)]]></printWhenExpression>
                 </reportElement>
                 <box>
-                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-                    <leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-                    <rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <pen lineWidth="0.5"/>
                 </box>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="Times New Roman" isBold="true"/>
+                    <font fontName="Times New Roman" size="7" isBold="true"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{semester}]]></textFieldExpression>
             </textField>
             <componentElement>
-                <reportElement x="50" y="0" width="425" height="26" uuid="e59b7a00-ea6f-4e09-8c8c-bc078577f23f">
-                    <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-                    <property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-                    <property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-                    <property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+                <reportElement stretchType="ContainerHeight" x="50" y="0" width="425" height="14" uuid="c37a7f3d-9372-4c95-b855-4d188911aafc">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} == null || $P{totalCourseCount}.intValue() <= 31)]]></printWhenExpression>
                 </reportElement>
                 <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-                    <datasetRun subDataset="courseDataset" uuid="612edd20-4ba8-49ad-8a1a-23ed6f56ae88">
-                        <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.Collection)$F{courseList})]]></dataSourceExpression>
+                    <datasetRun subDataset="courseDataset" uuid="97c441db-1fb8-440a-a51c-1bfd33df1e2f">
+                        <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.Collection)$F{courses})]]></dataSourceExpression>
                     </datasetRun>
-                    <jr:column width="70" uuid="bbb9eb15-047b-4275-bda3-08a2b428f1cc">
-                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-                        <jr:detailCell style="Table_TD" height="26">
-                            <property name="com.jaspersoft.studio.unit.height" value="px"/>
-                            <property name="com.jaspersoft.studio.unit.width" value="px"/>
-                            <textField>
-                                <reportElement x="0" y="0" width="70" height="26" uuid="7af57d19-f8cc-4c75-8725-7f5b397dcca1"/>
+                    <jr:column width="70" uuid="d3e5cabb-34ef-4da5-ad6d-4e04731a6366">
+                        <jr:detailCell style="Table_TD" height="14">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="70" height="14" uuid="3bd50396-6e69-450b-8477-a26a97873279"/>
                                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                                    <font fontName="Times New Roman"/>
+                                    <font fontName="Times New Roman" size="6.5"/>
                                 </textElement>
                                 <textFieldExpression><![CDATA[$F{course}]]></textFieldExpression>
                             </textField>
                         </jr:detailCell>
                     </jr:column>
-                    <jr:column width="100" uuid="d1653b14-d1ea-4d6c-bd37-c2be2bab3e02">
-                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-                        <jr:detailCell style="Table_TD" height="26">
-                            <property name="com.jaspersoft.studio.unit.width" value="px"/>
-                            <textField>
-                                <reportElement x="0" y="0" width="100" height="26" uuid="b75d74dd-caad-4e05-adc7-2bfcc5fef8dc"/>
+                    <jr:column width="100" uuid="baf7d2d0-25af-4977-8b0b-0f1120ca02bd">
+                        <jr:detailCell style="Table_TD" height="14">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="100" height="14" uuid="5d8a485e-8195-4e50-8681-052cff91b5fc"/>
                                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                                    <font fontName="Times New Roman"/>
+                                    <font fontName="Times New Roman" size="6.5"/>
                                 </textElement>
                                 <textFieldExpression><![CDATA[$F{typeOfCourse}]]></textFieldExpression>
                             </textField>
                         </jr:detailCell>
                     </jr:column>
-                    <jr:column width="115" uuid="2bc8a554-3877-4631-9802-5651ee56e2b4">
-                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-                        <jr:detailCell style="Table_TD" height="26">
-                            <property name="com.jaspersoft.studio.unit.width" value="px"/>
-                            <textField>
-                                <reportElement x="0" y="0" width="115" height="26" uuid="b860c58b-6a2c-4edd-b757-8f72349d0128"/>
+                    <jr:column width="115" uuid="40f91f7a-2b34-4771-83fe-3bd8be4c14b2">
+                        <jr:detailCell style="Table_TD" height="14">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="115" height="14" uuid="1b1584bb-260c-4149-bf59-3f05531d99e7"/>
                                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                                    <font fontName="Times New Roman"/>
+                                    <font fontName="Times New Roman" size="6.5"/>
                                 </textElement>
                                 <textFieldExpression><![CDATA[$F{content}]]></textFieldExpression>
                             </textField>
                         </jr:detailCell>
                     </jr:column>
-                    <jr:column width="35" uuid="ecaa15a9-3192-411c-b1c1-62a82df8fe1f">
-                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
-                        <jr:detailCell style="Table_TD" height="26">
-                            <property name="com.jaspersoft.studio.unit.width" value="px"/>
-                            <textField>
-                                <reportElement x="0" y="0" width="35" height="26" uuid="3fd7ae69-0983-4ce5-9c69-ba8723071c69"/>
+                    <jr:column width="35" uuid="a6a96caf-20c1-4888-b0d7-54b53859ceeb">
+                        <jr:detailCell style="Table_TD" height="14">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="14" uuid="c034a304-9372-41ba-abdf-8b95e682d0ad"/>
                                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                                    <font fontName="Times New Roman"/>
+                                    <font fontName="Times New Roman" size="6.5"/>
                                 </textElement>
                                 <textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
                             </textField>
                         </jr:detailCell>
                     </jr:column>
-                    <jr:column width="35" uuid="3555bd16-c48a-467c-85ad-d92fb7446220">
-                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
-                        <jr:detailCell style="Table_TD" height="26">
-                            <property name="com.jaspersoft.studio.unit.width" value="px"/>
-                            <textField>
-                                <reportElement x="0" y="0" width="35" height="26" uuid="5426a26a-dcbb-45a0-9496-f0e3e0d39bad"/>
+                    <jr:column width="35" uuid="ff8aef7a-9626-4d6a-955e-8e611fd9b4a1">
+                        <jr:detailCell style="Table_TD" height="14">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="14" uuid="a3065900-7721-44fb-a274-b9df266daa45"/>
                                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                                    <font fontName="Times New Roman"/>
+                                    <font fontName="Times New Roman" size="6.5"/>
                                 </textElement>
                                 <textFieldExpression><![CDATA[$F{gradePoint}]]></textFieldExpression>
                             </textField>
                         </jr:detailCell>
                     </jr:column>
-                    <jr:column width="35" uuid="d82ee4e1-c717-40aa-9bf3-ce0be7a682f2">
-                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
-                        <jr:detailCell style="Table_TD" height="26">
-                            <property name="com.jaspersoft.studio.unit.width" value="px"/>
-                            <textField>
-                                <reportElement x="0" y="0" width="35" height="26" uuid="2a65bcec-57da-4cc0-982e-8aba671613dd"/>
+                    <jr:column width="35" uuid="eb766850-b36f-4d76-98a3-e1f9853a9cf7">
+                        <jr:detailCell style="Table_TD" height="14">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="14" uuid="b6b58a63-e963-47eb-bf7c-7bb360af2166"/>
                                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                                    <font fontName="Times New Roman"/>
+                                    <font fontName="Times New Roman" size="6.5"/>
                                 </textElement>
                                 <textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
                             </textField>
                         </jr:detailCell>
                     </jr:column>
-                    <jr:column width="35" uuid="dd5f207f-2539-48b5-9383-cc3b5403187c">
-                        <property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
-                        <jr:detailCell style="Table_TD" height="26">
-                            <property name="com.jaspersoft.studio.unit.width" value="px"/>
-                            <textField>
-                                <reportElement x="0" y="0" width="35" height="26" uuid="498c59b7-40c1-419e-8a95-704148bf3951"/>
+                    <jr:column width="35" uuid="a4c3444e-5c0a-4a2c-9171-de8e00754337">
+                        <jr:detailCell style="Table_TD" height="14">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="14" uuid="82e4818c-51c0-4f4f-b186-945a6edd8bd8"/>
                                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                                    <font fontName="Times New Roman"/>
+                                    <font fontName="Times New Roman" size="6.5"/>
                                 </textElement>
                                 <textFieldExpression><![CDATA[$F{creditPoint}]]></textFieldExpression>
                             </textField>
@@ -175,19 +120,348 @@
                     </jr:column>
                 </jr:table>
             </componentElement>
-            <textField>
-                <reportElement stretchType="RelativeToTallestObject" x="475" y="0" width="35" height="26" uuid="140222b9-036e-4b92-b3e4-245e4c29a052">
-                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
-                    <property name="com.jaspersoft.studio.unit.width" value="px"/>
+            <textField isBlankWhenNull="true">
+                <reportElement stretchType="ContainerHeight" x="475" y="0" width="35" height="14" uuid="25b9bf1a-37fb-4eb6-9d45-c4bcd236eb27">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} == null || $P{totalCourseCount}.intValue() <= 31)]]></printWhenExpression>
                 </reportElement>
                 <box>
-                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-                    <leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-                    <rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <pen lineWidth="0.5"/>
                 </box>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="Times New Roman" isBold="true"/>
+                    <font fontName="Times New Roman" size="7" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{sgpa}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement stretchType="ContainerHeight" x="0" y="0" width="50" height="14" uuid="26b222d2-baef-44cc-b875-829bbdb2366c">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} != null && $P{totalCourseCount}.intValue() > 31 && $P{totalCourseCount}.intValue() <= 44)]]></printWhenExpression>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="6" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{semester}]]></textFieldExpression>
+            </textField>
+            <componentElement>
+                <reportElement stretchType="ContainerHeight" x="50" y="0" width="425" height="14" uuid="6639b2ae-290d-4cd1-9ec0-f06836632d43">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} != null && $P{totalCourseCount}.intValue() > 31 && $P{totalCourseCount}.intValue() <= 44)]]></printWhenExpression>
+                </reportElement>
+                <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+                    <datasetRun subDataset="courseDataset" uuid="1ac9c6c7-f632-44d9-aa05-be40348df302">
+                        <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.Collection)$F{courses})]]></dataSourceExpression>
+                    </datasetRun>
+                    <jr:column width="70" uuid="c1119bd9-9731-48b3-a7f9-f76a2c16b2f5">
+                        <jr:detailCell style="Table_TD" height="10">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="70" height="10" uuid="7146dbbb-693e-47cc-b77b-7b557ba13949"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="5.5"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{course}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="100" uuid="004e3568-cfa8-44ce-8edb-136fef0c2914">
+                        <jr:detailCell style="Table_TD" height="10">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="100" height="10" uuid="8c97dc0f-a79a-4b2f-b354-867cec849a82"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="5.5"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{typeOfCourse}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="115" uuid="7bffde0e-0842-41ee-802c-efe6b84a9368">
+                        <jr:detailCell style="Table_TD" height="10">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="115" height="10" uuid="99fc0916-88d2-4c33-8747-24dbf5866c75"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="5.5"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{content}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="5e4d19e5-6e95-4f58-85e6-1dd960f55c3e">
+                        <jr:detailCell style="Table_TD" height="10">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="10" uuid="ffcaa028-0c98-4ab5-b7e7-a584c638bae6"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="5.5"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="e637d70b-c7b3-46bd-838a-7286b533c2b3">
+                        <jr:detailCell style="Table_TD" height="10">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="10" uuid="f1f9ac45-637d-47a5-9b53-bc3b4b73c493"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="5.5"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{gradePoint}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="a18508a7-5cec-41ea-9a8d-4acea86247fb">
+                        <jr:detailCell style="Table_TD" height="10">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="10" uuid="c2cc0a94-a105-4c65-b387-e70900890992"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="5.5"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="809f7b50-b329-4878-a432-82e55468474a">
+                        <jr:detailCell style="Table_TD" height="10">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="10" uuid="670a124b-433e-4fb3-84a1-3293853ec163"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="5.5"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{creditPoint}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                </jr:table>
+            </componentElement>
+            <textField isBlankWhenNull="true">
+                <reportElement stretchType="ContainerHeight" x="475" y="0" width="35" height="14" uuid="0a494e3d-2fe8-4130-84fa-fa17fa47aaf7">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} != null && $P{totalCourseCount}.intValue() > 31 && $P{totalCourseCount}.intValue() <= 44)]]></printWhenExpression>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="6" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{sgpa}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement stretchType="ContainerHeight" x="0" y="0" width="50" height="14" uuid="c981550c-0cf1-42f1-b4ad-2bbe4be40709">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} != null && $P{totalCourseCount}.intValue() > 44 && $P{totalCourseCount}.intValue() <= 63)]]></printWhenExpression>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="4.5" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{semester}]]></textFieldExpression>
+            </textField>
+            <componentElement>
+                <reportElement stretchType="ContainerHeight" x="50" y="0" width="425" height="14" uuid="209b89c7-ed24-4690-bc9f-4824321621a6">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} != null && $P{totalCourseCount}.intValue() > 44 && $P{totalCourseCount}.intValue() <= 63)]]></printWhenExpression>
+                </reportElement>
+                <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+                    <datasetRun subDataset="courseDataset" uuid="c949a68f-fd31-40d2-b4a3-8e837fc3d15d">
+                        <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.Collection)$F{courses})]]></dataSourceExpression>
+                    </datasetRun>
+                    <jr:column width="70" uuid="9c42fe9b-7362-4bbe-8ffd-a0f49bcba184">
+                        <jr:detailCell style="Table_TD" height="7">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="70" height="7" uuid="999f86c9-6842-4810-8753-148d2a6190a8"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="4"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{course}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="100" uuid="e1f4dc85-cdb1-4a9c-ae80-aa64f9d5bba7">
+                        <jr:detailCell style="Table_TD" height="7">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="100" height="7" uuid="d7dec933-d817-46a9-a5e6-a86775855e5a"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="4"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{typeOfCourse}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="115" uuid="09f9af54-d494-41d9-9e8e-5461236bc48e">
+                        <jr:detailCell style="Table_TD" height="7">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="115" height="7" uuid="b3f9bc70-851b-47dc-84a9-9522dacfd592"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="4"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{content}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="f95a015a-7721-429f-b81a-9ca36bfdd311">
+                        <jr:detailCell style="Table_TD" height="7">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="7" uuid="2ab44868-db9f-43d2-a53f-299cfa73be41"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="4"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="cf235363-7981-4efb-9419-c6dc80b862cb">
+                        <jr:detailCell style="Table_TD" height="7">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="7" uuid="1effcd3f-ccca-4e2c-8a98-feb389894b44"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="4"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{gradePoint}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="cbb17fcf-7508-49e7-9614-11e0478d53bd">
+                        <jr:detailCell style="Table_TD" height="7">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="7" uuid="7705721d-75e8-4333-b517-d452f2f3d517"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="4"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="242e172e-02f9-4330-a12e-d3de51806519">
+                        <jr:detailCell style="Table_TD" height="7">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="7" uuid="a0aba593-d57a-4007-b6ee-052379957ab8"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="4"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{creditPoint}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                </jr:table>
+            </componentElement>
+            <textField isBlankWhenNull="true">
+                <reportElement stretchType="ContainerHeight" x="475" y="0" width="35" height="14" uuid="749309e8-f3a8-426a-a952-2d6024c8f98e">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} != null && $P{totalCourseCount}.intValue() > 44 && $P{totalCourseCount}.intValue() <= 63)]]></printWhenExpression>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="4.5" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{sgpa}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement stretchType="ContainerHeight" x="0" y="0" width="50" height="14" uuid="89f1fea5-e427-4c0b-b5a5-26a62f8f8f64">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} != null && $P{totalCourseCount}.intValue() > 63)]]></printWhenExpression>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="3.5" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{semester}]]></textFieldExpression>
+            </textField>
+            <componentElement>
+                <reportElement stretchType="ContainerHeight" x="50" y="0" width="425" height="14" uuid="40761a0e-6a00-4033-a8c5-17dd97f3b6ca">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} != null && $P{totalCourseCount}.intValue() > 63)]]></printWhenExpression>
+                </reportElement>
+                <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+                    <datasetRun subDataset="courseDataset" uuid="df429c74-2613-4c7d-8b76-a2a86bae86e3">
+                        <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.Collection)$F{courses})]]></dataSourceExpression>
+                    </datasetRun>
+                    <jr:column width="70" uuid="a5a94417-5209-4beb-90ba-8fd5deac3a2b">
+                        <jr:detailCell style="Table_TD" height="5">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="70" height="5" uuid="aa900fcb-ae05-48c4-b9f9-bb270f4f8064"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="3"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{course}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="100" uuid="285b1543-b685-4cb6-a1c2-a17258de3d05">
+                        <jr:detailCell style="Table_TD" height="5">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="100" height="5" uuid="ac41a37a-678e-434c-b3b5-320c2ef7b4b4"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="3"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{typeOfCourse}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="115" uuid="9db760e3-dc6b-41f7-87ec-48ebf32dd314">
+                        <jr:detailCell style="Table_TD" height="5">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="115" height="5" uuid="2174f191-ddd6-4aeb-8f38-81c0ca286e95"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="3"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{content}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="ae7e7a8b-4e0b-40d8-9d1d-f96a0843661f">
+                        <jr:detailCell style="Table_TD" height="5">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="5" uuid="b11b1a94-3676-4720-85eb-73aef83f400a"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="3"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="9306084e-53e2-49e4-ad5f-50b57e07d895">
+                        <jr:detailCell style="Table_TD" height="5">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="5" uuid="2acb2c42-7e71-4bf5-9ee1-e61845260b06"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="3"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{gradePoint}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="6b0bbb6e-5731-4cb2-902a-ba3e72da1d74">
+                        <jr:detailCell style="Table_TD" height="5">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="5" uuid="cc554302-4d22-4d44-97b8-f8c706fa3d57"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="3"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="35" uuid="f1ed6cd8-797c-4551-bc4a-36fe1a2b0910">
+                        <jr:detailCell style="Table_TD" height="5">
+                            <textField isBlankWhenNull="true">
+                                <reportElement x="0" y="0" width="35" height="5" uuid="c585561a-5f0c-4811-a000-e335f788a403"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font fontName="Times New Roman" size="3"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{creditPoint}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                </jr:table>
+            </componentElement>
+            <textField isBlankWhenNull="true">
+                <reportElement stretchType="ContainerHeight" x="475" y="0" width="35" height="14" uuid="a59a8107-1ab5-4a03-bf10-3743e5c68af3">
+                    <printWhenExpression><![CDATA[($P{totalCourseCount} != null && $P{totalCourseCount}.intValue() > 63)]]></printWhenExpression>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Times New Roman" size="3.5" isBold="true"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{sgpa}]]></textFieldExpression>
             </textField>

@@ -18,13 +18,19 @@ import com.transcript.AcademicResult.repository.SemesterRepository;
 import com.transcript.AcademicResult.service.TranscriptService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -52,7 +58,7 @@ public class TranscriptServiceImpl implements TranscriptService {
         String fileName = System.currentTimeMillis()+"_"+file.getOriginalFilename();
         Path path = Paths.get(uploadDir+fileName);
         Files.write(path, file.getBytes());
-        return fileName;
+        return path.toAbsolutePath().toString();
     }
 
     @Override
@@ -82,7 +88,33 @@ public class TranscriptServiceImpl implements TranscriptService {
     }
 
     @Override
-    public byte[] generateTranscript(Long id) {
-        return new byte[0];
+    public byte[] generateTranscript(Long id) throws JRException {
+        String filePath = System.getProperty("user.dir")+"\\src\\main\\resources\\reports\\";
+        Path transcriptPath = Paths.get(filePath,"TranscriptOfAcademicResult.jrxml");
+        Path semesterPath = Paths.get(filePath,"SemesterCourses.jrxml");
+        JasperReport transcriptReport = JasperCompileManager.compileReport(transcriptPath.toAbsolutePath().toString());
+        JasperReport semesterReport = JasperCompileManager.compileReport(semesterPath.toAbsolutePath().toString());
+        AcademicResult academicResult = academicResultRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("AcademicResult not found with id " + id));
+        List<Semester> semesters = semesterRepository.getByAcademicResult(academicResult);
+        Map<String,Object> data = new HashMap<>();
+        for(Field field : academicResult.getClass().getDeclaredFields()){
+            field.setAccessible(true);
+            try {
+                data.put(field.getName(), field.get(academicResult));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        Map<String,Object> parameters = new HashMap<>();
+        parameters.put("data", data);
+        parameters.put("semesterCourseReport", semesterReport);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(semesters);
+        // Pass JREmptyDataSource(1) so the main template renders EXACTLY once
+        JasperPrint jasperPrint = JasperFillManager.fillReport(
+                transcriptReport,
+                parameters,
+                new JREmptyDataSource(1)
+        );
+        return JasperExportManager.exportReportToPdf(jasperPrint);
     }
 }

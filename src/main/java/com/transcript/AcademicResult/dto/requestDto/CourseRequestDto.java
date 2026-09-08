@@ -15,6 +15,8 @@ public class CourseRequestDto {
 
     private String typeOfCourse;
 
+    private String content;
+
     private String grade;
 
     private String gradePoint;

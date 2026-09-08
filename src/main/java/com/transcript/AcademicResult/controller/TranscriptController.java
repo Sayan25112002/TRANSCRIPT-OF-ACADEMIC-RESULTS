@@ -8,6 +8,10 @@ import com.transcript.AcademicResult.dto.responseDto.CourseResponseDto;
 import com.transcript.AcademicResult.dto.responseDto.SemesterResponseDto;
 import com.transcript.AcademicResult.service.TranscriptService;
 import lombok.RequiredArgsConstructor;
+import net.sf.jasperreports.engine.JRException;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -36,5 +40,14 @@ public class TranscriptController {
     @GetMapping("/getAcademicResult/{id}")
     public AcademicResultResponseDto getAcademicResult(@PathVariable Long id){
         return transcriptService.getAcademicResult(id);
+    }
+
+    @GetMapping("/generateTranscript/{id}")
+    public HttpEntity<byte[]> generateTranscript(@PathVariable Long id) throws JRException {
+        byte[] transcript = transcriptService.generateTranscript(id);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("attachment", "transcript.pdf");
+        return new HttpEntity<>(transcript, headers);
     }
 }

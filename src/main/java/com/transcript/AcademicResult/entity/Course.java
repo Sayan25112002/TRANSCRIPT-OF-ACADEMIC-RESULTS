@@ -18,6 +18,8 @@ public class Course {
 
     private String typeOfCourse;
 
+    private String content;
+
     private String grade;
 
     private String gradePoint;
